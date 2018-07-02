@@ -5,6 +5,7 @@ require_once '../bean/AirlineBean.php';
 $op = $_GET['op'];
 switch ($op)
 {
+//    Listar Todos
     case "1":
         {                       
             $objBean = new DestinationBean;
@@ -15,6 +16,7 @@ switch ($op)
 
             break;
         }
+//        Listar Por Aerolinea
     case "2":
         {
             $id = $_GET['id'];
@@ -29,8 +31,15 @@ switch ($op)
 
             break;
         }
+//        Listar por Id de Destino
     case "3":
         {
+            $id = $_GET['id'];
+            
+            $objDao = new DestinationDAO();
+            
+            $LISTA = $objDao->GetById($id);
+            echo json_encode($LISTA,JSON_UNESCAPED_UNICODE);  
             break;
         }
     default :

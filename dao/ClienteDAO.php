@@ -2,7 +2,8 @@
 require_once '../util/ConnectDB.php';
 require_once '../bean/ClienteBean.php';
 class ClienteDAO
-{
+{   
+//    Login
     public function ValidarCliente(ClienteBean $obj){
             try {
                 //Conexion
@@ -39,8 +40,8 @@ class ClienteDAO
                                     }
                  return $LISTA;                   
     }
-                
-        public function RegistrarCliente(ClientBean $obj){
+//              Registro  
+        public function RegistrarCliente(ClienteBean $obj){
             try {              
                 $cn = new ConexionBD();
                     $cnx = $cn->getConexionBD();
@@ -48,7 +49,8 @@ class ClienteDAO
                     VALUES (?,?,?,?); ";                
 
                     $stmt = $cnx->prepare($sql);
-                    $stmt->bind_param('siii',$obj->Username,$obj->Password,$obj->Name,$obj->Address);
+                    $stmt->bind_param('ssss',$obj->Username,$obj->Password,
+                            $obj->Name,$obj->Address);
                     $stmt->execute();                  
 
                     $response = $stmt->get_result();

@@ -3,7 +3,8 @@ require_once '../bean/Cli_DesBean.php';
 require_once '../dao/PurchaseDAO.php';
 $op = $_GET['op'];
 switch ($op)
-{
+{   
+//    Listar Compras
     case "1":
         {                       
             $objBean = new DetailBean();
@@ -39,7 +40,7 @@ switch ($op)
             
             $objBean->setIdCliente($id);
             
-            $LISTA = $objDao->ListarPorClientes($objBean);
+            $LISTA = $objDao->getTripByClient($objBean);
             echo json_encode($LISTA,JSON_UNESCAPED_UNICODE);       
 
             break;

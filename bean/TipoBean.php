@@ -16,8 +16,7 @@
 
         function setTipo($tipo) {
             $this->tipo = $tipo;
-        }
-
+        }       
 
     }
     ?>
